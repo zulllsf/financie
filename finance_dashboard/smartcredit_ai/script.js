@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const reportStatusSpan = document.getElementById('report-status');
     const assessmentSummaryText = document.getElementById('assessment-summary-text');
-    const creditScoreText = document.getElementById('credit-score-text');
-    const recommendedLimitText = document.getElementById('recommended-limit-text');
-    const confidenceLevelText = document.getElementById('confidence-level-text');
+    const creditScoreDisplay = document.getElementById('credit-score-display'); // ID updated
+    const creditLimitDisplay = document.getElementById('credit-limit-display'); // ID updated
+    const confidenceLevelDisplay = document.getElementById('confidence-level-display'); // ID updated
     const positiveFactorsList = document.getElementById('positive-factors-list');
     const negativeFactorsList = document.getElementById('negative-factors-list');
     const reportTimestampSpan = document.getElementById('report-timestamp');
@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!reportData || !reportData.credit_analysis_report) {
             reportStatusSpan.textContent = "Falha ao carregar dados do relatório.";
             assessmentSummaryText.textContent = "-";
-            creditScoreText.textContent = "-";
-            recommendedLimitText.textContent = "-";
-            confidenceLevelText.textContent = "-";
+            creditScoreDisplay.textContent = "-"; // Updated ID
+            creditLimitDisplay.textContent = "-"; // Updated ID
+            confidenceLevelDisplay.textContent = "-"; // Updated ID
+            confidenceLevelDisplay.className = ''; // Clear previous classes
             positiveFactorsList.innerHTML = "<li>-</li>";
             negativeFactorsList.innerHTML = "<li>-</li>";
             reportTimestampSpan.textContent = new Date().toLocaleString();
@@ -30,9 +31,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const report = reportData.credit_analysis_report;
         reportStatusSpan.textContent = "Relatório Carregado";
         assessmentSummaryText.textContent = report.assessment_summary || "N/A";
-        creditScoreText.textContent = report.credit_score || "N/A";
-        recommendedLimitText.textContent = report.recommended_credit_limit_AOA !== undefined ? report.recommended_credit_limit_AOA.toLocaleString() + " AOA" : "N/A";
-        confidenceLevelText.textContent = report.confidence_level || "N/A";
+        creditScoreDisplay.textContent = report.credit_score || "N/A"; // Updated ID
+        creditLimitDisplay.textContent = report.recommended_credit_limit_AOA !== undefined ? report.recommended_credit_limit_AOA.toLocaleString() + " AOA" : "N/A"; // Updated ID
+        
+        confidenceLevelDisplay.textContent = report.confidence_level || "N/A"; // Updated ID
+        confidenceLevelDisplay.className = ''; // Reset classes before applying new one
+        if (report.confidence_level) {
+            const levelClass = `confidence-${report.confidence_level.toLowerCase()}`;
+            confidenceLevelDisplay.classList.add(levelClass);
+        }
 
         positiveFactorsList.innerHTML = "";
         if (report.key_positive_factors && report.key_positive_factors.length > 0) {
@@ -55,8 +62,10 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             negativeFactorsList.innerHTML = "<li>Nenhum fator negativo específico listado.</li>";
         }
-        // Assuming the report object itself has a 'created_at' if fetched from DB directly
-        reportTimestampSpan.textContent = report.created_at ? new Date(report.created_at).toLocaleString() : new Date().toLocaleString();
+        
+        // Use timestamp from the report if available (either 'created_at' from DB or 'analysis_timestamp' from Gemini)
+        const timestamp = report.created_at || report.analysis_timestamp || (reportData.analysis_timestamp); // Check top level if not in sub-report
+        reportTimestampSpan.textContent = timestamp ? new Date(timestamp).toLocaleString() : new Date().toLocaleString();
     }
 
     if (analyzeCreditButton) {
@@ -134,4 +143,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initial state message
     reportStatusSpan.textContent = "Aguardando início da análise.";
+
+    // Active Nav Link
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.main-nav ul li a');
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
+    });
 });
