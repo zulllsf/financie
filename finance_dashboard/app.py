@@ -686,3 +686,13 @@ def upload_transactions_file():
             return jsonify({"error": f"An error occurred while processing the file: {str(e_file)}"}), 500
     else:
         return jsonify({"error": "File type not allowed. Please upload CSV or XLSX."}), 400
+
+
+# --- Routes for Tab 4: RiskSense Analytics ---
+@app.route('/risksense_analytics/')
+def risksense_analytics_index():
+    return send_from_directory('risksense_analytics', 'index.html')
+
+@app.route('/risksense_analytics/<path:filename>')
+def risksense_analytics_static(filename):
+    return send_from_directory('risksense_analytics', filename)
