@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FraudGuard AI - Finance Dashboard</title>
+    <link rel="stylesheet" href="style.css"> <!-- Create this file later if needed -->
+</head>
+<body>
+    <header>
+        <h1>FraudGuard AI</h1>
+    </header>
+
+    <main>
+        <section id="controls-section">
+            <button id="analyze-fraud-button">Analisar Transações por Fraude</button>
+            <p id="analysis-status" style="margin-top: 10px;"></p>
+        </section>
+
+        <section id="fraud-summary-section">
+            <h2>Sumário da Análise de Fraude</h2>
+            <div id="fraud-summary-area">
+                <p>Total de Transações Verificadas: <span id="total-scanned">-</span></p>
+                <p>Transações Suspeitas Encontradas: <span id="suspicious-found">-</span></p>
+                <p>Nível Geral de Risco: <span id="overall-risk">-</span></p>
+            </div>
+        </section>
+        
+        <section id="fraud-report-section">
+            <h2>Relatório de Transações Suspeitas</h2>
+            <div id="fraud-report-area">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID da Transação</th>
+                            <th>Descrição Original</th>
+                            <th>Valor (AOA)</th>
+                            <th>Data Original</th>
+                            <th>Suspeita?</th>
+                            <th>Razão da Suspeita</th>
+                            <th>Score de Risco</th>
+                            <th>Ação Recomendada</th>
+                            <th>Scan ID (FraudGuard)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fraud-report-table-body">
+                        <!-- Suspicious transactions will be listed here by script.js -->
+                        <tr>
+                            <td colspan="9" style="text-align:center;">Nenhum relatório de fraude para exibir. Clique no botão acima para analisar.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section id="all-transactions-section">
+            <h2>Visualizar Todas as Transações (com dados de Fraude)</h2>
+            <ul id="all-transactions-list-fraudguard">
+                <!-- All transactions with their fraud status will be listed here -->
+                 <li>Aguardando carregamento de transações...</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Finance Dashboard AI</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

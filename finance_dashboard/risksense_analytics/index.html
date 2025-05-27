@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiskSense Analytics - Finance Dashboard</title>
+    <link rel="stylesheet" href="style.css"> <!-- Create this file later if needed -->
+    <style>
+        .risk-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .risk-card h4 {
+            margin-top: 0;
+            color: #c0392b; /* A reddish color for risk titles */
+        }
+        .risk-details p { margin: 5px 0; }
+        .risk-details strong { color: #555; }
+        #kri-summary-area ul { list-style-type: none; padding-left: 0; }
+        #kri-summary-area li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>RiskSense Analytics</h1>
+    </header>
+
+    <main>
+        <section id="controls-section">
+            <button id="analyze-risks-button">Analisar Riscos em Tempo Real</button>
+            <p id="risk-analysis-status" style="margin-top: 10px;"></p>
+        </section>
+
+        <section id="risk-analysis-report-area">
+            <h2>Relatório de Análise de Risco</h2>
+            <p><strong>Status da Análise:</strong> <span id="report-generation-status">Aguardando análise...</span></p>
+            
+            <h3>Avaliação Geral de Risco:</h3>
+            <p id="overall-risk-assessment-text">-</p>
+
+            <h3>Indicadores Chave de Risco (KRI) Sumarizados:</h3>
+            <div id="kri-summary-area">
+                <ul>
+                    <li>Volatilidade do Fluxo de Caixa (últimos 3m, desvio padrão AOA): <span id="kri-volatility">-</span></li>
+                    <li>Despesas Mensais Médias (AOA): <span id="kri-avg-expenses">-</span></li>
+                    <li>Dias de Caixa Disponível (Estimativa): <span id="kri-cash-days">-</span></li>
+                    <li>Concentração de Fontes de Renda (%): <span id="kri-income-concentration-perc">-</span> (<span id="kri-income-concentration-desc">-</span>)</li>
+                    <li>Grandes Pagamentos Próximos (próximos 30 dias, AOA): <span id="kri-upcoming-payments">-</span></li>
+                    <li>Saldo de Caixa Estimado Atual (AOA): <span id="kri-current-balance">-</span></li>
+                </ul>
+            </div>
+
+            <h3>Riscos Identificados:</h3>
+            <div id="identified-risks-container">
+                <p>Nenhum risco identificado ainda. Clique no botão para analisar.</p>
+                <!-- Risk cards will be dynamically inserted here -->
+            </div>
+            <p style="margin-top:15px;"><small>Relatório gerado em: <span id="report-timestamp">-</span></small></p>
+        </section>
+
+        <section id="previous-risk-reports-section">
+            <h2>Visualizar Relatório de Risco Anterior</h2>
+            <button id="load-previous-risk-report-button">Carregar Último Relatório de Risco Salvo</button>
+            <div id="previous-risk-report-display-area" style="margin-top:10px; padding:10px; border:1px solid #eee;">
+                <p>Nenhum relatório anterior carregado.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Finance Dashboard AI</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
