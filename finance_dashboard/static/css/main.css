@@ -1,0 +1,713 @@
+/* Global Styles */
+/* Basic Reset */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px; /* Add some padding around the whole page content */
+}
+
+h1, h2, h3, h4, h5, h6 { /* Added h4,h5,h6 for completeness */
+    margin-bottom: 1em;
+    color: #0056b3; /* A primary color example */
+    font-weight: 600;
+}
+h1 { font-size: 2.2em; text-align: center; margin-bottom: 1.5em; }
+h2 { font-size: 1.8em; margin-top: 1.5em; }
+h3 { font-size: 1.4em; margin-top: 1em; }
+h4 { font-size: 1.2em; margin-top: 0.8em; color: #004085; } /* Slightly different color for h4 */
+h5 { font-size: 1.0em; margin-top: 0.7em; font-weight: bold; }
+h6 { font-size: 0.9em; margin-top: 0.5em; font-weight: bold; color: #555; }
+
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff; /* White background for content areas */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+button, 
+input[type="submit"],
+input[type="button"] { /* Added input[type="button"] */
+    background-color: #007bff; /* Primary button color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin-right: 5px; /* Added some margin for multiple buttons */
+    margin-bottom: 5px; /* Added some margin for multiple buttons */
+}
+
+button:hover, 
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="file"],
+input[type="email"], /* Added email type */
+input[type="password"], /* Added password type */
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Basic Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #e9ecef; /* Light grey for table headers */
+    color: #495057;
+}
+tr:hover {
+    background-color: #f1f1f1; /* Slight hover effect for table rows */
+}
+
+/* Basic List Styling */
+ul, ol {
+    padding-left: 20px;
+    margin-bottom: 1em;
+}
+
+/* Basic Links Styling */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Navigation Bar Styling */
+.main-nav {
+    background-color: #004085; /* A slightly darker shade of primary blue */
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px; /* Space between nav and main content container */
+}
+
+.main-nav .nav-container { /* Reusing container principles for width/centering */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Pushes brand to left, links to right */
+    align-items: center;
+}
+
+.main-nav .nav-brand {
+    font-size: 1.5em;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none; /* In case it's wrapped in an <a> tag later */
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Align list items horizontally */
+}
+
+.main-nav ul li {
+    margin-left: 20px; /* Spacing between nav items */
+}
+
+.main-nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 5px 10px; /* Add some padding for easier clicking */
+    border-radius: 4px; /* Slightly rounded corners for links */
+    transition: background-color 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active { /* Style for active link - JS might be needed for true active state */
+    background-color: #0056b3; /* Slightly darker background on hover/active */
+}
+
+/* Responsive Design Adjustments */
+/* (Includes Responsive Navigation Bar) */
+@media (max-width: 768px) { /* Tablet and smaller */
+    .main-nav .nav-container {
+        flex-direction: column; /* Stack brand and links */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .main-nav .nav-brand {
+        margin-bottom: 10px; /* Space below brand when stacked */
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* Stack nav links vertically */
+        width: 100%; /* Full width for vertical nav */
+    }
+
+    .main-nav ul li {
+        margin-left: 0; /* Remove left margin for vertical stacking */
+        margin-bottom: 5px; /* Space between vertical nav items */
+        width: 100%; /* Make list items take full width */
+    }
+
+    .main-nav ul li a {
+        display: block; /* Make links take full width of li */
+        padding: 10px; /* Larger touch targets */
+        text-align: left; /* Align text to the left */
+    }
+
+    .main-nav ul li a:hover,
+    .main-nav ul li a.active {
+        background-color: #0056b3; /* Ensure hover/active styles are appropriate */
+    }
+}
+
+/* Responsive Tables */
+@media (max-width: 768px) {
+    .transaction-table-container { /* Assuming tables are wrapped in a div like this */
+        overflow-x: auto; /* Allow horizontal scrolling for the table */
+        display: block; /* Ensure it behaves as a block for overflow */
+        width: 100%;
+    }
+    /* Optional: Slightly smaller font in tables on small screens */
+    .transaction-table th, .transaction-table td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+}
+
+/* General adjustments for smaller screens */
+@media (max-width: 480px) { /* Smaller mobile devices */
+    body {
+        padding: 10px; /* Reduce overall page padding */
+    }
+    .container {
+        padding: 15px; /* Reduce container padding */
+    }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.5em; }
+    h3 { font-size: 1.2em; }
+
+    /* Further reduce table cell padding if needed */
+    .transaction-table th, .transaction-table td {
+        padding: 6px;
+        font-size: 0.85em;
+    }
+
+    /* Adjust KRI summary grid for very small screens if needed */
+    #kri-summary-area {
+        grid-template-columns: 1fr; /* Stack KRI items */
+    }
+     /* Adjust risk card grid for very small screens */
+    #risk-cards-container {
+        grid-template-columns: 1fr; /* Stack risk cards */
+    }
+}
+
+.general-action-button {
+    background-color: #28a745; /* Green for export/actions */
+    color: white;
+    margin: 10px 5px; /* Adjust margin as needed */
+}
+.general-action-button:hover {
+    background-color: #218838; /* Darker green */
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.error-message { color: #c0392b; font-weight: bold; }
+.success-message { color: #27ae60; font-weight: bold; }
+.info-message { color: #2980b9; }
+
+/* Header and Footer basic styles */
+header {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Section styling */
+section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #ffffff; /* White background for sections within container if needed */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+section > h2:first-child, section > h3:first-child {
+    margin-top: 0; /* Remove extra margin for headings that are first child of a section */
+}
+
+/* Navigation Bar Styling */
+.main-nav {
+    background-color: #004085; /* A slightly darker shade of primary blue */
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px; /* Space between nav and main content container */
+}
+
+.main-nav .nav-container { /* Reusing container principles for width/centering */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Pushes brand to left, links to right */
+    align-items: center;
+}
+
+.main-nav .nav-brand {
+    font-size: 1.5em;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none; /* In case it's wrapped in an <a> tag later */
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Align list items horizontally */
+}
+
+.main-nav ul li {
+    margin-left: 20px; /* Spacing between nav items */
+}
+
+.main-nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 5px 10px; /* Add some padding for easier clicking */
+    border-radius: 4px; /* Slightly rounded corners for links */
+    transition: background-color 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active { /* Style for active link - JS might be needed for true active state */
+    background-color: #0056b3; /* Slightly darker background on hover/active */
+}
+
+/* Styling for Tab 1: Previsão de Fluxo AI */
+
+/* Data Input Form Enhancement */
+#transaction-form { /* Assuming your form has this ID, or use a class */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Spacing between grid items */
+    padding: 20px;
+    background-color: #f9f9f9; /* Slightly different background for form area */
+    border-radius: 8px;
+    margin-bottom: 30px; /* Space below the form */
+}
+
+#transaction-form div { /* Assuming each form element (label + input) is wrapped in a div */
+    display: flex;
+    flex-direction: column; /* Stack label above input */
+}
+
+/* Spacing for buttons if they are part of the form grid or directly after */
+#transaction-form button, 
+#upload-form button { /* If upload form is separate but styled similarly */
+    /* General button styles are already applied. Add specifics if needed: */
+    /* e.g., width: auto; grid-column: 1 / -1; /* Span full width if needed */
+}
+
+/* Transaction List Styling */
+#transactions-list-container { /* Changed from #transactions-list to target the container */
+    margin-top: 20px;
+    /* Any specific container styling if needed */
+}
+
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse; /* Clean table lines */
+    margin-bottom: 30px;
+}
+
+.transaction-table th, .transaction-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.transaction-table th {
+    background-color: #e9ecef; /* Light grey header */
+    color: #333;
+    font-weight: bold;
+}
+
+.transaction-table tr:nth-child(even) {
+    background-color: #f8f9fa; /* Zebra striping for rows */
+}
+
+.transaction-table tr:hover {
+    background-color: #e2e6ea;
+}
+
+/* Style for positive (receita) and negative (despesa) values */
+.transaction-table .valor-receita {
+    color: green;
+    font-weight: bold;
+}
+.transaction-table .valor-despesa {
+    color: red;
+    font-weight: bold;
+}
+
+/* AI Analysis Area Styling */
+#ai-analysis-area {
+    background-color: #e6f7ff; /* Light blue background */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+#ai-analysis-area h3 { /* General h3 styling is already in main.css, this can refine if needed */
+    color: #0056b3; /* Consistent heading color */
+    margin-top: 0; /* Reset top margin if it's the first element */
+}
+#ai-analysis-area h3:not(:first-child) { /* Add top margin for subsequent h3s in this area */
+    margin-top: 1em;
+}
+
+
+#ai-tips-list {
+    list-style: inside disc; /* Or use custom icons/styling */
+    padding-left: 20px;
+}
+
+#ai-tips-list li {
+    margin-bottom: 8px;
+}
+
+#ai-evaluation-details p, #ai-prediction-text { /* Assuming these are p tags or similar */
+    margin-bottom: 10px;
+}
+
+/* Chart Container Styling */
+#cashflow-chart-container { /* Assuming you might wrap the canvas in a div */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#cashflow-chart {
+    max-width: 100%;
+    max-height: 400px; /* Example max height */
+}
+
+/* Tab 2: FraudGuard AI Styles */
+
+/* Button is likely covered by global styles. Add if specific:
+.fraudguard-button { ... }
+*/
+
+#fraud-summary-area {
+    background-color: #f8f9fa; /* Light background */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid #dee2e6;
+}
+
+#fraud-summary-area p {
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+#fraud-summary-area p strong { /* For the labels like "Total Scanned:" */
+    color: #0056b3;
+}
+
+/* Specific styling for overall risk level for emphasis */
+/* Applied to the span holding the value, e.g., <span id="overall-risk-value">Medium</span> */
+#overall-risk.risk-low { color: green; font-weight: bold; } /* Changed ID to match HTML */
+#overall-risk.risk-medium { color: orange; font-weight: bold; } /* Changed ID to match HTML */
+#overall-risk.risk-high { color: red; font-weight: bold; } /* Changed ID to match HTML */
+#overall-risk.risk-error { color: #721c24; font-weight: bold; background-color: #f8d7da; padding: 2px 5px; border-radius: 3px;} /* For error states */
+
+
+/* Suspicious Transactions Table - Assuming reuse of .transaction-table */
+/* If #fraud-report-area table needs unique styling, define it here.
+   For now, we assume it will get the .transaction-table class.
+*/
+#fraud-report-area .transaction-table { /* More specific selector if needed */
+    margin-bottom: 25px;
+}
+
+
+/* Styling for fraud status in the all-transactions list */
+/* These are applied directly to text or a general span */
+.status-suspicious {
+    color: red;
+    font-weight: bold;
+}
+.status-not-suspicious {
+    color: green;
+}
+.status-not-analyzed {
+    color: #6c757d; /* Gray for not analyzed */
+}
+
+/* Styling for badges within a cell (e.g., in the all-transactions table) */
+.transaction-table .fraud-status-cell span.badge { /* Generic badge style */
+    padding: 4px 8px; /* Increased padding */
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: white;
+    text-transform: uppercase; /* Added for emphasis */
+    letter-spacing: 0.5px; /* Added letter spacing */
+}
+.transaction-table .fraud-status-cell .badge-suspicious { background-color: #dc3545; } /* Bootstrap danger red */
+.transaction-table .fraud-status-cell .badge-clear { background-color: #28a745; } /* Bootstrap success green */
+.transaction-table .fraud-status-cell .badge-unanalyzed { background-color: #6c757d; } /* Bootstrap secondary gray */
+.transaction-table .fraud-status-cell .badge-error { background-color: #ffc107; color: #333; } /* Bootstrap warning yellow for errors in analysis */
+
+/* Tab 3: SmartCredit AI Styles */
+
+#credit-analysis-report-area {
+    background-color: #f9f9f9; /* Light background for the report area */
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.credit-report-section {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee; /* Separator for sections */
+}
+.credit-report-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.credit-report-section h4 { /* For subheadings like "Credit Score", "Recommended Limit" */
+    color: #0056b3; /* Primary color */
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+/* Styling for specific report items */
+#credit-score-display, /* Assuming an ID for the element showing the score */
+#credit-limit-display  /* Assuming an ID for the element showing the limit */
+{
+    font-size: 1.5em; /* Larger font for key figures */
+    font-weight: bold;
+    color: #333;
+    padding: 10px;
+    background-color: #e6f7ff; /* Light blue highlight */
+    border-radius: 5px;
+    display: inline-block; /* So background highlight fits content */
+    margin-bottom: 10px;
+}
+
+/* Styling for positive and negative factor lists */
+#positive-factors-list,
+#negative-factors-list {
+    list-style-type: none; /* Remove default bullets */
+    padding-left: 0;
+}
+
+#positive-factors-list li,
+#negative-factors-list li {
+    padding: 8px 0px 8px 25px; /* Add padding for custom bullet */
+    position: relative; /* For custom bullet positioning */
+    margin-bottom: 5px;
+    border-bottom: 1px dotted #eee;
+}
+#positive-factors-list li:last-child,
+#negative-factors-list li:last-child {
+    border-bottom: none;
+}
+
+/* Custom bullets for factors */
+#positive-factors-list li::before {
+    content: '\2714'; /* Checkmark unicode */
+    color: green;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 8px; /* Adjust as needed */
+}
+
+#negative-factors-list li::before {
+    content: '\2718'; /* X mark unicode */
+    color: red;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 8px; /* Adjust as needed */
+}
+
+#assessment-summary-text { /* Assuming an ID for the summary text paragraph */
+    font-style: italic;
+    color: #555;
+    line-height: 1.7;
+}
+
+#confidence-level-display { /* Assuming an ID for confidence level */
+    font-weight: bold;
+}
+.confidence-high { color: green; }
+.confidence-medium { color: orange; }
+.confidence-low { color: red; }
+
+/* Tab 4: RiskSense Analytics Styles */
+
+#kri-summary-area {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid #e0e0e0;
+    display: grid; /* Using grid for a neat layout of KRIs */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 15px;
+}
+
+.kri-item {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.kri-item h5 { /* KRI Name */
+    margin: 0 0 5px 0;
+    color: #0056b3;
+    font-size: 0.9em;
+}
+
+.kri-item p { /* KRI Value */
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+#overall-risk-assessment-area { /* Area containing the overall assessment */
+    padding: 15px;
+    margin-bottom: 25px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+#overall-risk-assessment-area h4 {
+     margin-bottom: 5px;
+     color: #fff; /* Text color will be white or dark based on background */
+}
+
+#overall-risk-assessment-value { /* The element holding the actual text like "Elevated" */
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+/* Conditional background/text colors for overall assessment */
+.assessment-low { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;}
+.assessment-low h4 { color: #155724; } /* Adjust heading color too */
+.assessment-moderate { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba;}
+.assessment-moderate h4 { color: #856404; }
+.assessment-elevated { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;}
+.assessment-elevated h4 { color: #721c24; }
+.assessment-high { background-color: #dc3545; color: #fff; border: 1px solid #dc3545;} /* More intense for High */
+.assessment-high h4 { color: #fff; }
+
+
+#risk-cards-container { /* Renamed from #identified-risks-container for clarity */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive cards */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.risk-card { /* This class was already in index.html's inline styles, will be used by JS now */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.risk-card h5 { /* Risk Name - updated from h4 in previous inline style */
+    color: #0056b3;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.risk-card p {
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.risk-card p strong { /* For labels like "Potential Impact:", "Likelihood:" */
+    color: #333;
+}
+
+/* Conditional styling for impact/likelihood if desired */
+.impact-high, .likelihood-high { color: red; font-weight: bold; }
+.impact-medium, .likelihood-medium { color: orange; font-weight: bold; }
+.impact-low, .likelihood-low { color: green; font-weight: bold; }
+
+.risk-card .mitigation-strategy {
+    margin-top: auto; /* Pushes mitigation to the bottom if card heights vary */
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+    color: #444;
+}
+.risk-card .mitigation-strategy strong {
+    color: #0056b3;
+}

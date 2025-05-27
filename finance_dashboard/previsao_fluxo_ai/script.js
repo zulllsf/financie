@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const transactionForm = document.getElementById('transaction-form');
-    const transactionsList = document.getElementById('transactions-list');
+    // const transactionsList = document.getElementById('transactions-list'); // No longer a UL
+    const transactionsTableBody = document.getElementById('transactions-table-body');
     const formMessage = document.getElementById('form-message');
     const formError = document.getElementById('form-error');
     
@@ -282,4 +283,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial load
     fetchTransactions();
     renderCashFlowChart(null); 
+
+    // Active Nav Link
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.main-nav ul li a');
+    navLinks.forEach(link => {
+        // Handle root path redirection to /previsao_fluxo_ai/
+        if (link.getAttribute('href') === '/previsao_fluxo_ai/' && (currentPath === '/previsao_fluxo_ai/' || currentPath === '/')) {
+            link.classList.add('active');
+        } else if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
+    });
+
+    // Export to Excel Button
+    const exportExcelButton = document.getElementById('export-excel-button');
+    if (exportExcelButton) {
+        exportExcelButton.addEventListener('click', function() {
+            // Display a message or loading indicator if desired
+            // For example: formMessage.textContent = 'A preparar o seu ficheiro Excel...';
+            window.location.href = '/api/export_transactions_excel';
+            // Clear message after a delay if you set one
+            // setTimeout(() => { formMessage.textContent = ''; }, 3000);
+        });
+    }
 });

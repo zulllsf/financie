@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartCredit AI - Finance Dashboard</title>
-    <link rel="stylesheet" href="style.css"> <!-- Create this file later if needed -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body>
+    <nav class="main-nav">
+        <div class="nav-container"> <!-- To control width and centering like the main content container -->
+            <span class="nav-brand">Painel Financeiro</span>
+            <ul>
+                <li><a href="/previsao_fluxo_ai/">Previsão de Fluxo</a></li>
+                <li><a href="/fraudguard_ai/">FraudGuard AI</a></li>
+                <li><a href="/smartcredit_ai/">SmartCredit AI</a></li>
+                <li><a href="/risksense_analytics/">RiskSense Analytics</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
     <header>
         <h1>SmartCredit AI</h1>
     </header>
@@ -21,34 +34,43 @@
             <h2>Relatório de Análise de Crédito</h2>
             <div id="credit-analysis-report-area">
                 <p><strong>Status da Análise:</strong> <span id="report-status">Aguardando análise...</span></p>
-                <h3>Sumário da Avaliação:</h3>
-                <p id="assessment-summary-text">-</p>
                 
-                <div class="report-grid">
-                    <div>
-                        <h4>Pontuação de Crédito:</h4>
-                        <p id="credit-score-text">-</p>
-                    </div>
-                    <div>
-                        <h4>Limite de Crédito Recomendado (AOA):</h4>
-                        <p id="recommended-limit-text">-</p>
-                    </div>
-                    <div>
-                        <h4>Nível de Confiança da Análise:</h4>
-                        <p id="confidence-level-text">-</p>
+                <div class="credit-report-section">
+                    <h4>Sumário da Avaliação:</h4>
+                    <p id="assessment-summary-text">-</p>
+                </div>
+                
+                <div class="credit-report-section">
+                    <div class="report-grid"> <!-- Assuming this grid might still be useful or remove if not needed -->
+                        <div>
+                            <h4>Pontuação de Crédito:</h4>
+                            <p id="credit-score-display">-</p> <!-- ID changed -->
+                        </div>
+                        <div>
+                            <h4>Limite de Crédito Recomendado (AOA):</h4>
+                            <p id="credit-limit-display">-</p> <!-- ID changed -->
+                        </div>
+                        <div>
+                            <h4>Nível de Confiança da Análise:</h4>
+                            <p id="confidence-level-display">-</p> <!-- ID changed -->
+                        </div>
                     </div>
                 </div>
 
-                <h4>Fatores Positivos Chave:</h4>
-                <ul id="positive-factors-list">
-                    <li>-</li>
-                </ul>
+                <div class="credit-report-section">
+                    <h4>Fatores Positivos Chave:</h4>
+                    <ul id="positive-factors-list">
+                        <li>-</li>
+                    </ul>
+                </div>
 
-                <h4>Fatores Negativos Chave (Áreas para Melhoria):</h4>
-                <ul id="negative-factors-list">
-                    <li>-</li>
-                </ul>
-                 <p><small>Última atualização do relatório: <span id="report-timestamp">-</span></small></p>
+                <div class="credit-report-section">
+                    <h4>Fatores Negativos Chave (Áreas para Melhoria):</h4>
+                    <ul id="negative-factors-list">
+                        <li>-</li>
+                    </ul>
+                </div>
+                <p><small>Última atualização do relatório: <span id="report-timestamp">-</span></small></p>
             </div>
         </section>
         
@@ -65,7 +87,7 @@
     <footer>
         <p>&copy; 2024 Finance Dashboard AI</p>
     </footer>
-
+    </div> <!-- Close container -->
     <script src="script.js"></script>
 </body>
 </html>

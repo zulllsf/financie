@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FraudGuard AI - Finance Dashboard</title>
-    <link rel="stylesheet" href="style.css"> <!-- Create this file later if needed -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body>
+    <nav class="main-nav">
+        <div class="nav-container"> <!-- To control width and centering like the main content container -->
+            <span class="nav-brand">Painel Financeiro</span>
+            <ul>
+                <li><a href="/previsao_fluxo_ai/">Previsão de Fluxo</a></li>
+                <li><a href="/fraudguard_ai/">FraudGuard AI</a></li>
+                <li><a href="/smartcredit_ai/">SmartCredit AI</a></li>
+                <li><a href="/risksense_analytics/">RiskSense Analytics</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
     <header>
         <h1>FraudGuard AI</h1>
     </header>
@@ -20,16 +33,16 @@
         <section id="fraud-summary-section">
             <h2>Sumário da Análise de Fraude</h2>
             <div id="fraud-summary-area">
-                <p>Total de Transações Verificadas: <span id="total-scanned">-</span></p>
-                <p>Transações Suspeitas Encontradas: <span id="suspicious-found">-</span></p>
-                <p>Nível Geral de Risco: <span id="overall-risk">-</span></p>
+                <p><strong>Total de Transações Verificadas:</strong> <span id="total-scanned">-</span></p>
+                <p><strong>Transações Suspeitas Encontradas:</strong> <span id="suspicious-found">-</span></p>
+                <p><strong>Nível Geral de Risco:</strong> <span id="overall-risk">-</span></p> <!-- ID confirmed -->
             </div>
         </section>
         
         <section id="fraud-report-section">
             <h2>Relatório de Transações Suspeitas</h2>
-            <div id="fraud-report-area">
-                <table>
+            <div id="fraud-report-area" class="transaction-table-container"> <!-- Added class -->
+                <table class="transaction-table"> 
                     <thead>
                         <tr>
                             <th>ID da Transação</th>
@@ -55,17 +68,31 @@
         
         <section id="all-transactions-section">
             <h2>Visualizar Todas as Transações (com dados de Fraude)</h2>
-            <ul id="all-transactions-list-fraudguard">
-                <!-- All transactions with their fraud status will be listed here -->
-                 <li>Aguardando carregamento de transações...</li>
-            </ul>
+            <div id="all-transactions-table-container" class="transaction-table-container"> <!-- Added class -->
+                <table class="transaction-table">
+                     <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                            <th>Valor (AOA)</th>
+                            <th>Status Original</th>
+                            <th>Status Fraude (IA)</th>
+                            <th>ID</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-transactions-table-body-fraudguard">
+                        <tr><td colspan="7" style="text-align:center;">Aguardando carregamento de transações...</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2024 Finance Dashboard AI</p>
     </footer>
-
+    </div> <!-- Close container -->
     <script src="script.js"></script>
 </body>
 </html>
