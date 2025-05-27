@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão de Fluxo AI - Finance Dashboard</title>
+    <link rel="stylesheet" href="style.css"> <!-- We can create this later -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Previsão de Fluxo AI</h1>
+    </header>
+
+    <main>
+        <section id="data-input-section">
+            <h2>Registar Nova Transação</h2>
+            <form id="transaction-form">
+                <div>
+                    <label for="tipo">Tipo:</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="receita">Receita</option>
+                        <option value="despesa">Despesa</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="descricao">Descrição:</label>
+                    <input type="text" id="descricao" name="descricao" required>
+                </div>
+                <div>
+                    <label for="valor">Valor (AOA):</label>
+                    <input type="number" id="valor" name="valor" step="0.01" required>
+                </div>
+                <div>
+                    <label for="data_pagamento">Data de Pagamento/Recebimento:</label>
+                    <input type="date" id="data_pagamento" name="data_pagamento" required>
+                </div>
+                <div>
+                    <label for="status">Status:</label>
+                    <select id="status" name="status" required>
+                        <option value="pago">Pago</option>
+                        <option value="pendente">Pendente</option>
+                        <option value="agendado">Agendado</option>
+                    </select>
+                </div>
+                <button type="submit">Adicionar Transação</button>
+            </form>
+            <p id="form-message" style="color: green;"></p>
+            <p id="form-error" style="color: red;"></p>
+        </section>
+
+        <section id="file-upload-section">
+            <h2>Upload de Planilha de Transações</h2>
+            <form id="upload-form">
+                <input type="file" id="transaction-file-input" name="transaction_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                <button type="submit" id="upload-file-button">Carregar Arquivo</button>
+            </form>
+            <p id="upload-message" style="color: green;"></p>
+            <p id="upload-error" style="color: red;"></p>
+        </section>
+
+        <section id="transactions-display-section">
+            <h2>Transações Registadas</h2>
+            <ul id="transactions-list">
+                <!-- Transactions will be listed here by script.js -->
+            </ul>
+        </section>
+
+        <section id="ai-analysis-section">
+            <h2>Análise com IA</h2>
+            <div id="ai-analysis-area">
+                <h3>Previsão da IA:</h3>
+                <p id="ai-prediction-text">-</p>
+                <h3>Dicas para Melhorar:</h3>
+                <ul id="ai-tips-list"><li>-</li></ul>
+                <h3>Detalhes da Avaliação:</h3>
+                <div id="ai-evaluation-details">-</div>
+                <canvas id="cashflow-chart" width="400" height="200"></canvas>
+            </div>
+            <button id="analyze-ai-button">Analisar com IA (Placeholder)</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Finance Dashboard AI</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

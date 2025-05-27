@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCredit AI - Finance Dashboard</title>
+    <link rel="stylesheet" href="style.css"> <!-- Create this file later if needed -->
+</head>
+<body>
+    <header>
+        <h1>SmartCredit AI</h1>
+    </header>
+
+    <main>
+        <section id="controls-section">
+            <button id="analyze-credit-button">Realizar Análise de Crédito Automática</button>
+            <p id="credit-analysis-status" style="margin-top: 10px;"></p>
+        </section>
+
+        <section id="credit-analysis-report-section">
+            <h2>Relatório de Análise de Crédito</h2>
+            <div id="credit-analysis-report-area">
+                <p><strong>Status da Análise:</strong> <span id="report-status">Aguardando análise...</span></p>
+                <h3>Sumário da Avaliação:</h3>
+                <p id="assessment-summary-text">-</p>
+                
+                <div class="report-grid">
+                    <div>
+                        <h4>Pontuação de Crédito:</h4>
+                        <p id="credit-score-text">-</p>
+                    </div>
+                    <div>
+                        <h4>Limite de Crédito Recomendado (AOA):</h4>
+                        <p id="recommended-limit-text">-</p>
+                    </div>
+                    <div>
+                        <h4>Nível de Confiança da Análise:</h4>
+                        <p id="confidence-level-text">-</p>
+                    </div>
+                </div>
+
+                <h4>Fatores Positivos Chave:</h4>
+                <ul id="positive-factors-list">
+                    <li>-</li>
+                </ul>
+
+                <h4>Fatores Negativos Chave (Áreas para Melhoria):</h4>
+                <ul id="negative-factors-list">
+                    <li>-</li>
+                </ul>
+                 <p><small>Última atualização do relatório: <span id="report-timestamp">-</span></small></p>
+            </div>
+        </section>
+        
+        <section id="previous-reports-section">
+            <h2>Visualizar Relatório Anterior (se disponível)</h2>
+            <button id="load-previous-report-button">Carregar Último Relatório Salvo</button>
+            <div id="previous-report-display-area" style="margin-top:10px; padding:10px; border:1px solid #eee;">
+                <p>Nenhum relatório anterior carregado.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Finance Dashboard AI</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
